@@ -16,16 +16,16 @@ public class CourseRepo {
         new Course(4, "WAA", "CS501");
     }};
 
-    public void add(Course course) {
+    public void addCourse (Course course) {
         course.setId(id++);
         courses.add(course);
     }
 
-    public List<Course> list () {
+    public List<Course> getCourses () {
         return courses;
     }
 
-    public boolean update (Course course) {
+    public boolean updateCourse (Course course) {
         int index = 0;
         for (Course c : courses) {
             if (c.getId() == course.getId()) {
@@ -37,7 +37,7 @@ public class CourseRepo {
         return false;
     }
 
-    public boolean delete (int id) {
+    public boolean deleteCourse (int id) {
         int index = 0;
         for (Course c : courses) {
             if (c.getId() == id) {

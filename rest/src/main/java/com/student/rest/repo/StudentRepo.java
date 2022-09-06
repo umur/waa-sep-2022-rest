@@ -24,16 +24,16 @@ public class StudentRepo {
         }});
     }};
 
-    public void add(Student std) {
+    public void addStudent(Student std) {
         std.setId(id++);
         students.add(std);
     }
 
-    public List<Student> list () {
+    public List<Student> getStudents () {
         return students;
     }
 
-    public boolean update (Student course) {
+    public boolean updateStudent (Student course) {
         int index = 0;
         for (Student s : students) {
             if (s.getId() == course.getId()) {
@@ -45,7 +45,7 @@ public class StudentRepo {
         return false;
     }
 
-    public boolean delete (int id) {
+    public boolean deleteStudent (int id) {
         int index = 0;
         for (Student c : students) {
             if (c.getId() == id) {
