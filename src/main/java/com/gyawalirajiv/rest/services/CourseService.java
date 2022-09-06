@@ -1,17 +1,18 @@
 package com.gyawalirajiv.rest.services;
 
 import com.gyawalirajiv.rest.models.Course;
+import com.gyawalirajiv.rest.models.DTOs.CourseDTO;
 
 import java.util.List;
 
 public interface CourseService {
-    Course createCourse(Course course);
+    CourseDTO createCourse(CourseDTO course);
 
-    List<Course> getCourses();
+    List<CourseDTO> getCourses();
 
-    Course getCourse(Long id);
+    CourseDTO getCourse(Long id);
 
-    Course updateCourse(Long id, Course course);
+    CourseDTO updateCourse(Long id, CourseDTO course);
 
-    Course deleteCourse(Long id);
+    CourseDTO deleteCourse(Long id);
 }

@@ -1,22 +1,24 @@
 package com.gyawalirajiv.rest.services;
 
 import com.gyawalirajiv.rest.models.Course;
+import com.gyawalirajiv.rest.models.DTOs.CourseDTO;
+import com.gyawalirajiv.rest.models.DTOs.StudentDTO;
 import com.gyawalirajiv.rest.models.Student;
 
 import java.util.List;
 
 public interface StudentService {
-    Student createStudent(Student student);
+    StudentDTO createStudent(StudentDTO student);
 
-    List<Student> getStudents();
+    List<StudentDTO> getStudents();
 
-    Student getStudent(Long id);
+    StudentDTO getStudent(Long id);
 
-    Student updateStudent(Long id, Student student);
+    StudentDTO updateStudent(Long id, StudentDTO student);
 
-    Student deleteStudent(Long id);
+    StudentDTO deleteStudent(Long id);
 
-    List<Student> getStudentsByMajor(String major);
+    List<StudentDTO> getStudentsByMajor(String major);
 
-    List<Course> getCoursesByStudentId(int studentId);
+    List<CourseDTO> getCoursesByStudentId(int studentId);
 }
