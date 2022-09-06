@@ -16,5 +16,5 @@ public class Student {
     private String email;
     private String major;
     private double gpa;
-    private ArrayList<String> coursesTaken;
+    private ArrayList<Course> coursesTaken;
 }
