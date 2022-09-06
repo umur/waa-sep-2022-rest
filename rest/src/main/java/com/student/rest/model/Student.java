@@ -1,10 +1,14 @@
 package com.student.rest.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.util.ArrayList;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Student {
     private int id;
     private String firstName;
@@ -12,5 +16,5 @@ public class Student {
     private String email;
     private String major;
     private double gpa;
-    private List<String> coursesTaken;
+    private ArrayList<String> coursesTaken;
 }
