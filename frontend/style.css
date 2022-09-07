@@ -1,0 +1,7 @@
+.save{
+    width: 40%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 5px;
+    
+}

@@ -15,10 +15,6 @@ import java.util.stream.Collectors;
 @Repository
 public class StudentRepository  {
 
-
-
-
-
     private static List<Student> students = new ArrayList<>();
     static {
         List<Course> courses =CourseRepository.courses;
@@ -42,9 +38,7 @@ public class StudentRepository  {
         public void updateStudent(Student student,int id){
 
             Student studen = students.stream().filter(student1 -> student1.getId() == id).findAny().get();
-            studen.setId(studen.getId());
-            studen.setFirstName(studen.getFirstName());
-
+            students.set(students.indexOf(studen), student);
         }
 
         public void deleteStudentById(int id){

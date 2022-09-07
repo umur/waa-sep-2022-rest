@@ -23,17 +23,17 @@ public class StudentController {
     }
     @PostMapping
     @CrossOrigin
-    public void saveNewCourse(@RequestBody StudentDTO student){
+    public void saveStudent(@RequestBody StudentDTO student){
         studentServiceImp.saveNewStudent(student);
     }
     @DeleteMapping("/{id}")
     @CrossOrigin
-    public void deleteCourse(@PathVariable int id){
+    public void deleteStudent(@PathVariable int id){
         studentServiceImp.deleteSpecificStudent(id);
     }
     @PutMapping("/{id}")
     @CrossOrigin
-    public void updateSpecificCourse(@RequestBody StudentDTO student, @PathVariable int id){
+    public void updateSpecificStudent(@RequestBody StudentDTO student, @PathVariable int id){
         System.out.println("here");
         studentServiceImp.updateSpecificCourse(student,id);
     }

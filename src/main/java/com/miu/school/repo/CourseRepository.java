@@ -39,13 +39,8 @@ public class CourseRepository  {
         }
 
         public void updateCourseById(Course course,int id){
-            courses.stream().filter(course1 -> course1.getId() == id).map(course1 -> {course1.setId(course.getId());
-                course1.setName(course.getName());
-                course1.setCode(course.getCode());
-                System.out.println(course1.getName());
-                return courses.add(course1);
-            });
-
+            Course toBeupdated=courses.stream().filter(course1 -> course1.getId() == id).findAny().get();
+            courses.set(courses.indexOf(toBeupdated),course);
         }
 
 
