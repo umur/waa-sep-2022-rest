@@ -39,15 +39,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/courses/1",
+					"raw": "http://localhost:8080/courses",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"courses",
-						"1"
+						"courses"
 					]
 				}
 			},
@@ -271,7 +270,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"firstName\": \"Bill\",\r\n    \"lastName\": \"Gates\",\r\n    \"email\": \"gates@miu.edu\",\r\n    \"major\": \"CS\",\r\n    \"gpa\": 4.2,\r\n    \"coursesTaken\": [\r\n        {\r\n            \"id\": 1,\r\n            \"name\": \"MPP\",\r\n            \"code\": \"CS401\"\r\n        },\r\n        {\r\n            \"id\": 2,\r\n            \"name\": \"WAA\",\r\n            \"code\": \"CS545\"\r\n        }\r\n    ]\r\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
