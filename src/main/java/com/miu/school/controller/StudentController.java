@@ -1,5 +1,6 @@
 package com.miu.school.controller;
 
+import com.miu.school.dto.StudentDTO;
 import com.miu.school.entity.Course;
 import com.miu.school.entity.Student;
 import com.miu.school.service.impl.StudentServiceImp;
@@ -16,29 +17,35 @@ public class StudentController {
     StudentServiceImp studentServiceImp;
 
     @GetMapping
-    public List<Student> getAllStudents(){
+    @CrossOrigin
+    public List<StudentDTO> getAllStudents(){
         return studentServiceImp.getAllStudents();
     }
     @PostMapping
-    public void saveNewCourse(@RequestBody Student student){
+    @CrossOrigin
+    public void saveNewCourse(@RequestBody StudentDTO student){
         studentServiceImp.saveNewStudent(student);
     }
     @DeleteMapping("/{id}")
+    @CrossOrigin
     public void deleteCourse(@PathVariable int id){
         studentServiceImp.deleteSpecificStudent(id);
     }
     @PutMapping("/{id}")
-    public void updateSpecificCourse(@RequestBody Student student,@PathVariable int id){
+    @CrossOrigin
+    public void updateSpecificCourse(@RequestBody StudentDTO student, @PathVariable int id){
         System.out.println("here");
         studentServiceImp.updateSpecificCourse(student,id);
     }
     @GetMapping("/filter/{major}")
     @ResponseBody
+    @CrossOrigin
     public List<Student> getStudentsByMajor(@PathVariable String major){
         System.out.println(major);
         return studentServiceImp.getStudentsByMajor(major);
     }
     @GetMapping("/course/{id}")
+    @CrossOrigin
     public List<Course> getCoursesByStudentId(@PathVariable int id){
         return studentServiceImp.getCourseByStudentId(id);
     }
