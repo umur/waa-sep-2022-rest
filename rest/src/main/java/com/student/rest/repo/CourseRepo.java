@@ -27,7 +27,8 @@ public class CourseRepo {
 
 
     public void addCourse (Course course) {
-        course.setId(id++);
+        id = id + 1;
+        course.setId(id);
         courses.add(course);
     }
 

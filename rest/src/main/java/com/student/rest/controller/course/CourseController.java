@@ -23,7 +23,7 @@ public class CourseController {
     }
 
     @PostMapping
-    public void addCourse(Course course) throws CourseAlreadyExistsException {
+    public void addCourse(@RequestBody Course course) throws CourseAlreadyExistsException {
         courseService.add(course);
     }
 

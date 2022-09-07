@@ -57,7 +57,8 @@ public class StudentRepo {
     }
 
     public void addStudent(Student std) {
-        std.setId(id++);
+        id = id + 1;
+        std.setId(id);
         students.add(std);
     }
 
