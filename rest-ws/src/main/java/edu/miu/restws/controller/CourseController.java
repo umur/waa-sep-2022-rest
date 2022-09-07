@@ -1,7 +1,6 @@
 package edu.miu.restws.controller;
 
 import edu.miu.restws.dto.CourseDto;
-import edu.miu.restws.entity.Course;
 import edu.miu.restws.service.CourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -33,5 +32,10 @@ public class CourseController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable int id) {
         courseService.delete(id);
+    }
+
+    @PutMapping
+    public void update(@RequestBody CourseDto courseDto) {
+        courseService.update(courseDto);
     }
 }

@@ -16,4 +16,5 @@ public class StudentDto {
     private String major;
 
     private float gpa;
+
 }

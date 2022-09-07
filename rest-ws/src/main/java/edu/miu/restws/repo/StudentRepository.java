@@ -6,6 +6,7 @@ import edu.miu.restws.exception.NotFoundException;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class StudentRepository {
@@ -22,14 +23,11 @@ public class StudentRepository {
     }
 
     public void delete(int id) {
-        Student student = DataSource.STUDENTS.stream()
+        Optional<Student> student = DataSource.STUDENTS.stream()
                 .filter(s -> s.getId() == id)
-                .findAny()
-                .orElseGet(null);
+                .findAny();
 
-        if(student != null) {
-            DataSource.STUDENTS.remove(student);
-        }
+        student.ifPresent(DataSource.STUDENTS::remove);
     }
 
     public void update(Student student) {
