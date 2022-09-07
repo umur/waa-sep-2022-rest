@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Henry Ha">
+        <title>Courses</title>
+
+        <link href="./css/bootstrap.css" rel="stylesheet">
+        <!-- <script src="./js/bootstrap.js"></script> -->
+        <script src="./js/main.js"></script>
+    </head>
+
+    <body>
+        <main>
+            <br>
+            <div class="container marketing">
+                <h3>List of courses</h3>
+                <div id="courses" class="row">
+                </div>
+
+                <hr class="featurette-divider">
+                <div class="row featurette">
+                    <div class="col-md-12">
+                        <h2 class="featurette-heading" id="course-heading">Add a new Course</h2>
+                        <p class="lead">
+                        <form id="course-form">
+                            <div class="mb-3">
+                                <label for="course-name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="course-name">
+
+                            </div>
+                            <div class="mb-3">
+                                <label for="course-code" class="form-label">Code</label>
+                                <input type="text" class="form-control" id="course-code">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" id="course-btn">Submit</button>
+                        </form>
+                        </p>
+                    </div>
+                </div>
+
+                <!--  For Students-->
+                <hr class="featurette-divider">
+                <h3>List of students</h3>
+                <div id="students" class="row">
+                </div>
+
+                <hr class="featurette-divider">
+                <div class="row featurette">
+                    <div class="col-md-12">
+                        <h2 class="featurette-heading" id="std-heading">Add a new Student</h2>
+                        <p class="lead">
+                        <form id="std-form">
+                            <div class="mb-3">
+                                <label for="std-first-name" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="std-first-name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="std-last-name" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="std-last-name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="std-email" class="form-label">Email</label>
+                                <input type="text" class="form-control" id="std-email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="std-major" class="form-label">Major</label>
+                                <input type="text" class="form-control" id="std-major">
+                            </div>
+                            <div class="mb-3">
+                                <label for="std-gpa" class="form-label">GPA</label>
+                                <input type="text" class="form-control" id="std-gpa">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" id="std-btn">Submit</button>
+                        </form>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </body>
+
+</html>
