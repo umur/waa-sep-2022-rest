@@ -1,5 +1,6 @@
 package com.example.restfulapi.Controller;
 
+import com.example.restfulapi.DTO.CourseDTO;
 import com.example.restfulapi.Model.Course;
 import com.example.restfulapi.Repository.CourseRepo;
 import com.example.restfulapi.Service.CourseService;
@@ -14,17 +15,17 @@ public class CourseController {
        @Autowired
        CourseService courseService;
     @PostMapping
-    public void addCourse(@RequestBody Course course){
+    public void addCourse(@RequestBody CourseDTO course){
         courseService.saveCourse(course);
     }
 
     @GetMapping
-    public List<Course> getAllCourses(){
+    public List<CourseDTO> getAllCourses(){
         return courseService.findAllCourses();
     }
 
     @PutMapping("/{id}")
-    public void updateCourse(@PathVariable int id, @RequestBody Course course){
+    public void updateCourse(@PathVariable int id, @RequestBody CourseDTO course){
         courseService.updateCourse(id,course);
     }
 
