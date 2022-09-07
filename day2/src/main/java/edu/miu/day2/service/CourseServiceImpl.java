@@ -1,39 +1,46 @@
 package edu.miu.day2.service;
 
 import edu.miu.day2.entity.Course;
+import edu.miu.day2.entity.DTO.CourseDTO;
 import edu.miu.day2.repo.StudentAndCourseRepo;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class CourseServiceImpl implements CourseService{
 
+    private final ModelMapper modelMapper;
     private final StudentAndCourseRepo studentAndCourseRepo;
     @Override
-    public Course createCourse(Course course) {
+    public CourseDTO createCourse(CourseDTO course) {
 
-        return StudentAndCourseRepo.createCourse(course);
+        return modelMapper.map(StudentAndCourseRepo.createCourse(modelMapper.map(course,Course.class)),CourseDTO.class);
     }
 
     @Override
-    public List<Course> getCourses() {
-        return StudentAndCourseRepo.getAllCourse();
+    public List<CourseDTO> getCourses() {
+        List<Course> courses= StudentAndCourseRepo.getAllCourse();
+        return courses.stream().map(c->modelMapper.map(c,CourseDTO.class)).collect(Collectors.toList());
     }
 
     @Override
-    public Course getCourse(Long id) {
-        return studentAndCourseRepo.getAllCourse(id);
+    public CourseDTO getCourse(Long id) {
+
+        return modelMapper.map(studentAndCourseRepo.getAllCourse(id),CourseDTO.class);
     }
 
     @Override
-    public Course updateCourse(Long id, Course course) {
-        return studentAndCourseRepo.updateCourse(id, course);
+    public CourseDTO updateCourse(Long id, CourseDTO course) {
+        return modelMapper.map(studentAndCourseRepo.updateCourse(id, modelMapper.map(course,Course.class)), CourseDTO.class);
     }
 
     @Override
-    public Course deleteCourse(Long id) {
-        return studentAndCourseRepo.deleteCourse(id);
+    public CourseDTO deleteCourse(Long id) {
+        return modelMapper.map(studentAndCourseRepo.deleteCourse(id),CourseDTO.class);
     }
 }

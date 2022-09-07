@@ -1,18 +1,19 @@
 package edu.miu.day2.service;
 
 import edu.miu.day2.entity.Course;
+import edu.miu.day2.entity.DTO.CourseDTO;
 
 import java.util.List;
 
 public interface CourseService {
-    Course createCourse(Course course);
+    CourseDTO createCourse(CourseDTO course);
 
-    List<Course> getCourses();
+    List<CourseDTO> getCourses();
 
-    Course getCourse(Long id);
+    CourseDTO getCourse(Long id);
 
-    Course updateCourse(Long id, Course course);
+    CourseDTO updateCourse(Long id, CourseDTO course);
 
-    Course deleteCourse(Long id);
+    CourseDTO deleteCourse(Long id);
 
 }
