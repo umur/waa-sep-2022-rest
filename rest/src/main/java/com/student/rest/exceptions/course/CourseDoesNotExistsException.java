@@ -1,4 +1,4 @@
-package com.student.rest.exceptions;;
+package com.student.rest.exceptions.course;;
 
 public class CourseDoesNotExistsException extends Exception{
     public CourseDoesNotExistsException() {};

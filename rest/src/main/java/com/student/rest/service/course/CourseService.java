@@ -1,6 +1,6 @@
 package com.student.rest.service.course;
 
-import com.student.rest.exceptions.CourseDoesNotExistsException;
+import com.student.rest.exceptions.course.CourseDoesNotExistsException;
 import com.student.rest.exceptions.course.CourseAlreadyExistsException;
 import com.student.rest.model.Course;
 

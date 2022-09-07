@@ -1,6 +1,6 @@
 package com.student.rest.controller.course;
 
-import com.student.rest.exceptions.CourseDoesNotExistsException;
+import com.student.rest.exceptions.course.CourseDoesNotExistsException;
 import com.student.rest.exceptions.course.CourseAlreadyExistsException;
 import com.student.rest.model.Course;
 import com.student.rest.service.course.CourseService;
@@ -14,7 +14,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/course")
 public class CourseController {
-    @Autowired
     private final CourseService courseService;
 
     // /course GET
