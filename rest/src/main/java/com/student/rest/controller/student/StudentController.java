@@ -28,8 +28,8 @@ public class StudentController {
     }
 
     @PutMapping("/{id}")
-    public boolean updateStudent(Student student) throws StudentDoesNotExistException {
-        return studentService.updateStudent(student);
+    public boolean updateStudent(@PathVariable int id, @RequestBody Student student) throws StudentDoesNotExistException {
+        return studentService.updateStudent(student, id);
     }
 
     @DeleteMapping("/{id}")
@@ -42,7 +42,7 @@ public class StudentController {
         return studentService.getStudentsByMajor(major);
     }
 
-    @GetMapping("/course/{id}")
+    @GetMapping("/{id}/course")
     public List<Course> getCoursesByStudentId(@PathVariable int id) {
         return studentService.getCoursesByStudentId(id);
     }

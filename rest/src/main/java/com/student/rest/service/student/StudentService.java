@@ -14,7 +14,7 @@ public interface StudentService {
 
     public List<Student> get();
 
-    public boolean updateStudent(Student student) throws StudentDoesNotExistException;
+    public boolean updateStudent(Student student, int id) throws StudentDoesNotExistException;
 
     public boolean deleteStudent(int id) throws StudentDoesNotExistException;
 

@@ -28,11 +28,11 @@ public class CourseServiceImp implements CourseService {
     }
 
     @Override
-    public boolean updateCourse(Course course) throws CourseDoesNotExistsException {
-        if (!courseRepo.exists(course.getId())) {
+    public boolean updateCourse(Course course, int id) throws CourseDoesNotExistsException {
+        if (!courseRepo.exists(id)) {
             throw new CourseDoesNotExistsException("Course Already Exists !!!");
         }
-        return courseRepo.updateCourse(course);
+        return courseRepo.updateCourse(course, id);
     }
 
     @Override

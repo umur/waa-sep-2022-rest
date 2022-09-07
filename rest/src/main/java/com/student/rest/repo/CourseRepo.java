@@ -36,10 +36,10 @@ public class CourseRepo {
         return courses;
     }
 
-    public boolean updateCourse (Course course) {
+    public boolean updateCourse (Course course, int id) {
         int index = 0;
         for (Course c : courses) {
-            if (c.getId() == course.getId()) {
+            if (id == course.getId()) {
                 courses.set(index, course);
                 return true;
             }

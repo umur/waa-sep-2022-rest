@@ -28,8 +28,8 @@ public class CourseController {
     }
 
     @PutMapping("/{id}")
-    public boolean updateCourse(Course course) throws CourseDoesNotExistsException {
-        return courseService.updateCourse(course);
+    public boolean updateCourse(@PathVariable int id, @RequestBody Course course) throws CourseDoesNotExistsException {
+        return courseService.updateCourse(course, id);
     }
 
     @DeleteMapping("/{id}")

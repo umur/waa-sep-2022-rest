@@ -30,11 +30,11 @@ public class StudentServiceImp implements StudentService {
     }
 
     @Override
-    public boolean updateStudent(Student student) throws StudentDoesNotExistException {
-        if (!studentRepo.exists(student.getId())) {
+    public boolean updateStudent(Student student, int id) throws StudentDoesNotExistException {
+        if (!studentRepo.exists(id)) {
             throw new StudentDoesNotExistException("Student does not exist !!!");
         }
-        return studentRepo.updateStudent(student);
+        return studentRepo.updateStudent(student, id);
     }
 
     @Override

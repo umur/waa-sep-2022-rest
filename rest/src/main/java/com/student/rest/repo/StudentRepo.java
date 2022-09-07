@@ -65,11 +65,11 @@ public class StudentRepo {
         return students;
     }
 
-    public boolean updateStudent (Student course) {
+    public boolean updateStudent (Student student, int id) {
         int index = 0;
         for (Student s : students) {
-            if (s.getId() == course.getId()) {
-                students.set(index, course);
+            if (id == student.getId()) {
+                students.set(index, student);
                 return true;
             }
             index++;
