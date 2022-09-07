@@ -12,15 +12,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public interface StudentService {
-    public StudentDto add(StudentDto student) throws StudentAlreadyExistsException;
+    public Student add(Student student) throws StudentAlreadyExistsException;
 
-    public List<StudentDto> get();
+    public List<Student> get();
 
-    public boolean updateStudent(StudentDto student, int id) throws StudentDoesNotExistException;
+    public boolean updateStudent(Student student, int id) throws StudentDoesNotExistException;
 
     public boolean deleteStudent(int id) throws StudentDoesNotExistException;
 
-    public List<StudentDto> getStudentsByMajor(String major);
+    public List<Student> getStudentsByMajor(String major);
 
-    public List<CourseDto> getCoursesByStudentId(int studentId);
+    public List<Course> getCoursesByStudentId(int studentId);
 }

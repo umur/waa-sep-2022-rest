@@ -1,12 +1,10 @@
 package com.student.rest.controller.course;
 
-import com.student.rest.dto.CourseDto;
 import com.student.rest.exceptions.course.CourseDoesNotExistsException;
 import com.student.rest.exceptions.course.CourseAlreadyExistsException;
 import com.student.rest.model.Course;
 import com.student.rest.service.course.CourseService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,17 +17,17 @@ public class CourseController {
 
     // /course GET
     @GetMapping
-    public List<CourseDto> getAll() {
+    public List<Course> getAll() {
         return courseService.get();
     }
 
     @PostMapping
-    public CourseDto addCourse(@RequestBody CourseDto course) throws CourseAlreadyExistsException {
+    public Course addCourse(@RequestBody Course course) throws CourseAlreadyExistsException {
         return courseService.add(course);
     }
 
     @PutMapping("/{id}")
-    public boolean updateCourse(@PathVariable int id, @RequestBody CourseDto course) throws CourseDoesNotExistsException {
+    public boolean updateCourse(@PathVariable int id, @RequestBody Course course) throws CourseDoesNotExistsException {
         return courseService.updateCourse(course, id);
     }
 

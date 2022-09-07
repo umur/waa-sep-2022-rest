@@ -8,6 +8,7 @@ import com.student.rest.model.Course;
 import com.student.rest.model.Student;
 import com.student.rest.repo.StudentRepo;
 import com.student.rest.service.student.StudentService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,25 +19,31 @@ public class StudentServiceImp implements StudentService {
     @Autowired
     private StudentRepo studentRepo;
 
+    private ModelMapper mapper;
+
     @Override
-    public StudentDto add(StudentDto student) throws StudentAlreadyExistsException {
+    public Student add(Student student) throws StudentAlreadyExistsException {
         if (studentRepo.exists(student.getId())) {
             throw new StudentAlreadyExistsException("Student Already Exists !!!");
         }
-        return studentRepo.addStudent(student);
+        mapper = new ModelMapper();
+        var mappedStudent = mapper.map(student, Student.class);
+        return studentRepo.addStudent(mappedStudent);
     }
 
     @Override
-    public List<StudentDto> get() {
+    public List<Student> get() {
       return studentRepo.getStudents();
     }
 
     @Override
-    public boolean updateStudent(StudentDto student, int id) throws StudentDoesNotExistException {
+    public boolean updateStudent(Student student, int id) throws StudentDoesNotExistException {
         if (!studentRepo.exists(id)) {
             throw new StudentDoesNotExistException("Student does not exist !!!");
         }
-        return studentRepo.updateStudent(student, id);
+        mapper = new ModelMapper();
+        var mappedStudent = mapper.map(student, Student.class);
+        return studentRepo.updateStudent(mappedStudent, id);
     }
 
     @Override
@@ -48,12 +55,12 @@ public class StudentServiceImp implements StudentService {
     }
 
     @Override
-    public List<StudentDto> getStudentsByMajor(String major) {
+    public List<Student> getStudentsByMajor(String major) {
         return studentRepo.getStudentsByMajor(major);
     }
 
     @Override
-    public List<CourseDto> getCoursesByStudentId(int studentId) {
+    public List<Course> getCoursesByStudentId(int studentId) {
         return studentRepo.getCoursesByStudentId(studentId);
     }
 }

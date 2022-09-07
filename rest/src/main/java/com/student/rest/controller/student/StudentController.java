@@ -20,17 +20,17 @@ public class StudentController {
 
     // /course GET
     @GetMapping
-    public List<StudentDto> getAll() {
+    public List<Student> getAll() {
         return studentService.get();
     }
 
     @PostMapping
-    public StudentDto addStudent(@RequestBody StudentDto student) throws StudentAlreadyExistsException {
+    public Student addStudent(@RequestBody Student student) throws StudentAlreadyExistsException {
         return studentService.add(student);
     }
 
     @PutMapping("/{id}")
-    public boolean updateStudent(@PathVariable int id, @RequestBody StudentDto student) throws StudentDoesNotExistException {
+    public boolean updateStudent(@PathVariable int id, @RequestBody Student student) throws StudentDoesNotExistException {
         return studentService.updateStudent(student, id);
     }
 
@@ -40,12 +40,12 @@ public class StudentController {
     }
 
     @GetMapping("/major/{major}")
-    public List<StudentDto> getStudentsByMajor(@PathVariable String major) {
+    public List<Student> getStudentsByMajor(@PathVariable String major) {
         return studentService.getStudentsByMajor(major);
     }
 
     @GetMapping("/{id}/course")
-    public List<CourseDto> getCoursesByStudentId(@PathVariable int id) {
+    public List<Course> getCoursesByStudentId(@PathVariable int id) {
         return studentService.getCoursesByStudentId(id);
     }
 
