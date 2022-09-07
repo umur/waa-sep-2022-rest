@@ -1,0 +1,200 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Lab2-Restful-WS",
+		"_postman_id": "7d9598f8-0fa5-283b-b441-970c2cca6e13",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Student",
+			"description": "",
+			"item": [
+				{
+					"name": "Get-All-Students",
+					"request": {
+						"url": "http://localhost:8080/students",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Search-Student-By-Major",
+					"request": {
+						"url": {
+							"raw": "http://localhost:8080/students/search?major=computer science",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"students",
+								"search"
+							],
+							"query": [
+								{
+									"key": "major",
+									"value": "computer science",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Student-By-Id",
+					"request": {
+						"url": "http://localhost:8080/students/1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update-Student",
+					"request": {
+						"url": "http://localhost:8080/students",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"firstName\": \"Phat Updated\",\n    \"lastName\": \"Nguyen Updated\",\n    \"email\": \"phatnguyen-updated@gmail.com\",\n    \"major\": \"Computer Science - Updated\",\n    \"gpa\": 4\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add-Student",
+					"request": {
+						"url": "http://localhost:8080/students",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Adam\",\n    \"lastName\": \"Johnson\",\n    \"email\": \"adam@gmail.com\",\n    \"major\": \"Computer Science\",\n    \"gpa\": 4\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete-Student-By-Id",
+					"request": {
+						"url": "http://localhost:8080/students/1",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Course",
+			"description": "",
+			"item": [
+				{
+					"name": "GET-All-Courses",
+					"request": {
+						"url": "http://localhost:8080/courses",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET-Course-By-Id",
+					"request": {
+						"url": "http://localhost:8080/courses/1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add-Course",
+					"request": {
+						"url": "http://localhost:8080/courses",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"SA\",\n    \"code\": \"005\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update-Course",
+					"request": {
+						"url": "http://localhost:8080/courses",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n        \"id\": 1,\n        \"name\": \"MWA\",\n        \"code\": \"008\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete-Course",
+					"request": {
+						"url": "http://localhost:8080/courses/1",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
