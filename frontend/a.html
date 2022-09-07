@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" 
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    rel="nofollow" 
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css"/>
+    <title>Document</title>
+    <script>
+        getData();
+        async function getData(){
+        const response = await fetch('http://localhost:8081/students')
+        const data = await response.json();
+        const tbody = document.querySelector('#bodys')
+        let students = data.map(student =>{
+            let tr = document.createElement('tr');
+            let tdFirst = document.createElement('td');
+            let tdLast = document.createElement('td');
+            let tdEmail =   document.createElement('td');
+            let editBtn = document.createElement('button');
+            let deleteBtn = document.createElement('button');
+            editBtn.innerHTML = "Edit";
+            deleteBtn.innerHTML = "Delete";
+            tdFirst.textContent = student.firstName;
+            tdLast.textContent  = student.lastName;
+            tdEmail.textContent = student.email;
+            tr.appendChild(tdFirst);
+            tr.appendChild(tdLast);
+            tr.appendChild(tdEmail);
+            tr.appendChild(editBtn);
+            tr.appendChild(deleteBtn);
+            console.log(student.firstName)
+            //li.textContent = student.firstName;
+            return tr;
+        });
+        tbody.append(...students);
+    }
+    function test(){
+        let fname = document.getElementById("fname").value;
+        let lname = document.getElementById("lname").value;
+        let email = document.getElementById("email").value;
+        fetch("http://localhost:8081/students", {
+                method: "POST",
+                body: JSON.stringify({
+                    id: 23,
+                    firstName: fname ,
+                    lastName: lname,
+                    email: email
+        }),
+     headers: {
+         "Content-type": "application/json; charset=UTF-8"}
+        })
+ .then(response => response.json())
+ .then(json=>console(json));
+ location.reload()
+    }
+    </script>
+</head>
+<body>
+    
+    <h1 id="header"> Student Managment Page</h1>
+    <h2>Add New student</h2>
+    <div class="save">
+    <label>First Name : </label>
+    <input type="text" name="fname"  id="fname"/>
+    <label>Last Name : </label>
+    <input type="text" name="lname" id="lname"/>
+    <label>Email : </label>
+    <input type="text" name="email" id="email"/>
+    <button onclick="test()">Save</button>
+`   </div>
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Action</th>
+
+          </tr>
+        </thead>
+        <tbody id="bodys">
+        </tbody>
+      </table>
+
+</body>
+</html>
