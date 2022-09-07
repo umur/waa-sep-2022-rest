@@ -5,16 +5,26 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class CourseRepo {
     private static int id = 4;
-    private static List<Course> courses = new ArrayList<>() {{
-        new Course(1, "FPP", "CS401");
-        new Course(2, "MPP", "CS421");
-        new Course(3, "WAP", "CS431");
-        new Course(4, "WAA", "CS501");
-    }};
+    private static List<Course> courses = new ArrayList<>();
+
+    static {
+        Course course1 = new Course(1, "FPP", "CS401");
+        Course course2 = new Course(2, "MPP", "CS421");
+        Course course3 =  new Course(3, "WAP", "CS431");
+        Course course4 =  new Course(4, "WAA", "CS501");
+
+        courses.add(course1);
+        courses.add(course2);
+        courses.add(course3);
+        courses.add(course4);
+    }
+
+
 
     public void addCourse (Course course) {
         course.setId(id++);
@@ -22,6 +32,7 @@ public class CourseRepo {
     }
 
     public List<Course> getCourses () {
+        System.out.println(courses);
         return courses;
     }
 
@@ -47,5 +58,9 @@ public class CourseRepo {
             index++;
         }
         return false;
+    }
+
+    public boolean exists (int id) {
+        return courses.stream().filter(course -> course.getId() == id).collect(Collectors.toList()).size() == 1;
     }
 }
