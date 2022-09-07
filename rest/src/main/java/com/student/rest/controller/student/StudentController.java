@@ -23,8 +23,8 @@ public class StudentController {
     }
 
     @PostMapping
-    public void addStudent(@RequestBody Student student) throws StudentAlreadyExistsException {
-        studentService.add(student);
+    public Student addStudent(@RequestBody Student student) throws StudentAlreadyExistsException {
+        return studentService.add(student);
     }
 
     @PutMapping("/{id}")

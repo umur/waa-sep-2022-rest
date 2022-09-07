@@ -23,8 +23,8 @@ public class CourseController {
     }
 
     @PostMapping
-    public void addCourse(@RequestBody Course course) throws CourseAlreadyExistsException {
-        courseService.add(course);
+    public Course addCourse(@RequestBody Course course) throws CourseAlreadyExistsException {
+        return courseService.add(course);
     }
 
     @PutMapping("/{id}")
@@ -33,7 +33,7 @@ public class CourseController {
     }
 
     @DeleteMapping("/{id}")
-    public boolean deleteCourse(int id) throws CourseDoesNotExistsException {
+    public boolean deleteCourse(@PathVariable int id) throws CourseDoesNotExistsException {
         return courseService.deleteCourse(id);
     }
 }

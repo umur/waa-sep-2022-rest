@@ -15,11 +15,11 @@ public class CourseServiceImp implements CourseService {
     @Autowired
     private CourseRepo courseRepo;
 
-    public void add(Course course) throws CourseAlreadyExistsException {
+    public Course add(Course course) throws CourseAlreadyExistsException {
         if (courseRepo.exists(course.getId())) {
             throw new CourseAlreadyExistsException("Course Already Exists !!!");
         }
-        courseRepo.addCourse(course);
+        return courseRepo.addCourse(course);
     }
 
     @Override

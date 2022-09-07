@@ -26,10 +26,11 @@ public class CourseRepo {
 
 
 
-    public void addCourse (Course course) {
+    public Course addCourse (Course course) {
         id = id + 1;
         course.setId(id);
         courses.add(course);
+        return course;
     }
 
     public List<Course> getCourses () {
@@ -40,7 +41,7 @@ public class CourseRepo {
     public boolean updateCourse (Course course, int id) {
         int index = 0;
         for (Course c : courses) {
-            if (id == course.getId()) {
+            if (id == c.getId()) {
                 courses.set(index, course);
                 return true;
             }

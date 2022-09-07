@@ -17,11 +17,11 @@ public class StudentServiceImp implements StudentService {
     private StudentRepo studentRepo;
 
     @Override
-    public void add(Student student) throws StudentAlreadyExistsException {
+    public Student add(Student student) throws StudentAlreadyExistsException {
         if (studentRepo.exists(student.getId())) {
             throw new StudentAlreadyExistsException("Student Already Exists !!!");
         }
-        studentRepo.addStudent(student);
+        return studentRepo.addStudent(student);
     }
 
     @Override

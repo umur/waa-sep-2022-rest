@@ -56,10 +56,11 @@ public class StudentRepo {
         students.add(std4);
     }
 
-    public void addStudent(Student std) {
+    public Student addStudent(Student std) {
         id = id + 1;
         std.setId(id);
         students.add(std);
+        return std;
     }
 
     public List<Student> getStudents () {
@@ -69,7 +70,7 @@ public class StudentRepo {
     public boolean updateStudent (Student student, int id) {
         int index = 0;
         for (Student s : students) {
-            if (id == student.getId()) {
+            if (id == s.getId()) {
                 students.set(index, student);
                 return true;
             }

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public interface StudentService {
-    public void add(Student student) throws StudentAlreadyExistsException;
+    public Student add(Student student) throws StudentAlreadyExistsException;
 
     public List<Student> get();
 
