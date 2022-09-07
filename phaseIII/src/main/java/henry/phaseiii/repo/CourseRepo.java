@@ -19,9 +19,10 @@ public class CourseRepo {
         courses.add(c2);
     }
 
-    public void add(Course course) {
+    public Course add(Course course) {
         course.setId(++seq);
         courses.add(course);
+        return course;
     }
 
     public List<Course> getCourses() {

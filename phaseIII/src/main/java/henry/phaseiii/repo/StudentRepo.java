@@ -21,9 +21,10 @@ public class StudentRepo {
         students.add(s2);
     }
 
-    public void add(Student student) {
+    public Student add(Student student) {
         student.setId(++seq);
         students.add(student);
+        return student;
     }
 
     public void takeCourse(int studentId, Course course) {

@@ -20,8 +20,8 @@ public class CourseController {
     }
 
     @PostMapping
-    public void save(@RequestBody CourseDto course) {
-        courseService.save(course);
+    public CourseDto save(@RequestBody CourseDto course) {
+        return courseService.save(course);
     }
 
     @PutMapping("/{courseId}")

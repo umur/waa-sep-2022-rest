@@ -24,8 +24,9 @@ public class CourseServiceImpl implements CourseService {
     private ModelMapper modelMapper;
 
     @Override
-    public void save(CourseDto courseDto) {
-        courseRepo.add(modelMapper.map(courseDto, Course.class));
+    public CourseDto save(CourseDto courseDto) {
+        Course course = courseRepo.add(modelMapper.map(courseDto, Course.class));
+        return course != null ? modelMapper.map(course, CourseDto.class) : null;
     }
 
     @Override

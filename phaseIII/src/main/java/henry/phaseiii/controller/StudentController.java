@@ -31,8 +31,8 @@ public class StudentController {
     }
 
     @PostMapping
-    public void save(@RequestBody StudentDto student) {
-        studentService.save(student);
+    public StudentDto save(@RequestBody StudentDto student) {
+        return studentService.save(student);
     }
 
     @PostMapping("/{studentId}/courses")
@@ -41,8 +41,8 @@ public class StudentController {
     }
 
     @PutMapping("/{studentId}")
-    public void update(@PathVariable int studentId, @RequestBody StudentDto student) {
-        studentService.update(studentId, student);
+    public StudentDto update(@PathVariable int studentId, @RequestBody StudentDto student) {
+        return studentService.update(studentId, student);
     }
 
     @DeleteMapping("/{studentId}")

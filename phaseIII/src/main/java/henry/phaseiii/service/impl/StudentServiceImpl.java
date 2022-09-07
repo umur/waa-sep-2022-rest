@@ -23,12 +23,13 @@ public class StudentServiceImpl implements StudentService {
     private ModelMapper modelMapper;
 
     @Override
-    public void save(StudentDto studentDto) {
+    public StudentDto save(StudentDto studentDto) {
         if (studentDto.getCoursesTaken() == null) {
             studentDto.setCoursesTaken(new ArrayList<>());
         }
 
-        studentRepo.add(modelMapper.map(studentDto, Student.class));
+        Student student = studentRepo.add(modelMapper.map(studentDto, Student.class));
+        return student != null ? modelMapper.map(student, StudentDto.class) : null;
     }
 
     private List<StudentDto> getStudentDtos(List<Student> students) {
@@ -65,14 +66,15 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void update(int studentId, StudentDto studentDto) {
+    public StudentDto update(int studentId, StudentDto studentDto) {
         studentRepo.update(studentId, modelMapper.map(studentDto, Student.class));
+        return studentDto;
     }
 
     @Override
     public StudentDto delete(int studentId) {
         Student student = studentRepo.delete(studentId);
-        return modelMapper.map(student, StudentDto.class);
+        return student != null ? modelMapper.map(student, StudentDto.class): null;
     }
 
     @Override
