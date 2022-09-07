@@ -6,6 +6,7 @@ import com.example.restfulapi.Model.Course;
 import com.example.restfulapi.Model.Student;
 import com.example.restfulapi.Repository.StudentRepo;
 import com.example.restfulapi.Service.StudentService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,15 +14,20 @@ import java.util.ArrayList;
 import java.util.List;
 @Service
 public class StudentServiceImpl implements StudentService {
-    @Autowired
-    StudentRepo studentRepo;
+
+    private StudentRepo studentRepo;
+    private ModelMapper modelMapper;
+    public StudentServiceImpl(StudentRepo studentRepo, ModelMapper modelMapper){
+        this.studentRepo=studentRepo;
+        this.modelMapper=modelMapper;
+    }
 
     @Override
     public List<StudentDTO> findAll() {
         List<StudentDTO> studto= new ArrayList<>();
         List<Student> stu=studentRepo.getAllStudents();
         for(Student s:stu){
-            StudentDTO studentdto=new StudentDTO(s.getId(),s.getFirstName(),s.getLastName(),s.getEmail(),s.getMajor(),s.getGPA(),s.getCourseTaken());
+            StudentDTO studentdto=modelMapper.map(s,StudentDTO.class);
             studto.add(studentdto);
         }
         return studto;
@@ -29,13 +35,13 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void add(StudentDTO student) {
-        Student stu = new Student(student.getId(),student.getFirstName(),student.getLastName(),student.getEmail(),student.getMajor(),student.getGPA(),student.getCourseTaken());
+        Student stu = modelMapper.map(student,Student.class);
         studentRepo.saveStudent(stu);
     }
 
     @Override
     public void updateStudent(int id, StudentDTO student) {
-        Student stu = new Student(student.getId(),student.getFirstName(),student.getLastName(),student.getEmail(),student.getMajor(),student.getGPA(),student.getCourseTaken());
+        Student stu = modelMapper.map(student,Student.class);
         studentRepo.updateStudent(id,stu);
     }
 
@@ -49,7 +55,7 @@ public class StudentServiceImpl implements StudentService {
         List<Student> stud=studentRepo.getAllStudentByMajor(major);
         List<StudentDTO>studto=new ArrayList<>();
         for(Student s: stud){
-            StudentDTO studentdto=new StudentDTO(s.getId(),s.getFirstName(),s.getLastName(),s.getEmail(),s.getMajor(),s.getGPA(),s.getCourseTaken());
+            StudentDTO studentdto=modelMapper.map(s,StudentDTO.class);
             studto.add(studentdto);
         }
         return  studto;
@@ -60,7 +66,7 @@ public class StudentServiceImpl implements StudentService {
         List<Course> crs=studentRepo.getAllCoursesByStudentId(id);
         List<CourseDTO> crsdto=new ArrayList<>();
         for(Course c: crs){
-            CourseDTO coursedto=new CourseDTO(c.getId(),c.getName(),c.getCode());
+            CourseDTO coursedto=modelMapper.map(c,CourseDTO.class);
             crsdto.add(coursedto);
         }
         return crsdto;

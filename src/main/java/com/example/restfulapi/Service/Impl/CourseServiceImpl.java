@@ -4,6 +4,7 @@ import com.example.restfulapi.DTO.CourseDTO;
 import com.example.restfulapi.Model.Course;
 import com.example.restfulapi.Repository.CourseRepo;
 import com.example.restfulapi.Service.CourseService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,13 +12,16 @@ import java.util.ArrayList;
 import java.util.List;
 @Service
 public class CourseServiceImpl implements CourseService {
-
-    @Autowired
-    CourseRepo courseRepo;
+   private CourseRepo courseRepo;
+   private ModelMapper modelMapper;
+    public CourseServiceImpl(CourseRepo courseRepo, ModelMapper modelMapper){
+        this.courseRepo=courseRepo;
+        this.modelMapper=modelMapper;
+    }
 
     @Override
     public void saveCourse(CourseDTO course) {
-        Course crs= new Course(course.getId(),course.getName(),course.getCode());
+        Course crs= modelMapper.map(course,Course.class);
         courseRepo.saveCourse(crs);
 
     }
@@ -27,7 +31,7 @@ public class CourseServiceImpl implements CourseService {
         List<Course> crs=  courseRepo.getCourses();
         List<CourseDTO> coursedto =new ArrayList<>();
         for(Course c:crs){
-            CourseDTO crsdto=new CourseDTO(c.getId(),c.getName(),c.getCode());
+            CourseDTO crsdto=modelMapper.map(c,CourseDTO.class);
             coursedto.add(crsdto);
         }
         return coursedto;
@@ -35,7 +39,7 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public void updateCourse(int id,CourseDTO course) {
-        Course crs= new Course(course.getId(),course.getName(),course.getCode());
+        Course crs= modelMapper.map(course,Course.class);
         courseRepo.updateCourse(id,crs);
     }
     @Override
