@@ -31,9 +31,9 @@ public class StudentController {
     }
 
     @PutMapping("/{id}")
-    public StudentDto put(@PathVariable int id, @RequestBody StudentDto c) {
+    public boolean put(@PathVariable int id, @RequestBody StudentDto c) {
         studentService.update(id, c);
-        return c;
+        return true;
     }
 
     @DeleteMapping("/{id}")

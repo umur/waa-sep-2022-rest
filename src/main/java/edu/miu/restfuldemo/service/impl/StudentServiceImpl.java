@@ -2,7 +2,6 @@ package edu.miu.restfuldemo.service.impl;
 
 import edu.miu.restfuldemo.dto.CourseDto;
 import edu.miu.restfuldemo.dto.StudentDto;
-import edu.miu.restfuldemo.entity.Course;
 import edu.miu.restfuldemo.entity.Student;
 import edu.miu.restfuldemo.repo.CourseRepo;
 import edu.miu.restfuldemo.repo.StudentRepo;
@@ -41,15 +40,16 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public StudentDto add(StudentDto student) {
-        Student c = modelMapper.map(student, Student.class);
-        Student newStudent =  studentRepo.add(c);
+        Student s = modelMapper.map(student, Student.class);
+        Student newStudent =  studentRepo.add(s);
         return modelMapper.map(newStudent, StudentDto.class);
     }
 
     @Override
     public void update(int id, StudentDto student) {
-        Student c = modelMapper.map(student, Student.class);
-        studentRepo.update(id, c);
+        Student s = modelMapper.map(student, Student.class);
+        s.setId(id);
+        studentRepo.update(id, s);
     }
 
     @Override
@@ -59,8 +59,8 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<StudentDto> getStudentsByMajor(String major) {
-        List<Student> students = studentRepo.getAll();
-        return students.stream().filter(c -> c.getMajor().equals(major)).map(c -> modelMapper.map(c, StudentDto.class)).collect(Collectors.toList());
+        Student s = studentRepo.filter(c -> c.getMajor().equalsIgnoreCase(major)).findFirst().orElse(null);
+        return studentRepo.filter(c -> c.getMajor().equals(major)).map(c -> modelMapper.map(c, StudentDto.class)).collect(Collectors.toList());
     }
 
     @Override
@@ -69,8 +69,7 @@ public class StudentServiceImpl implements StudentService {
         if (student == null) return new ArrayList<>();
 
         List<Integer> courseIds = student.getCoursesTaken();
-        List<Course> courses = courseRepo.getAll();
-        return courses.stream().filter(c -> courseIds.contains(c.getId())).map(c -> modelMapper.map(c, CourseDto.class)).collect(Collectors.toList());
+        return courseRepo.filter(c -> courseIds.contains(c.getId())).map(c -> modelMapper.map(c, CourseDto.class)).collect(Collectors.toList());
     }
 
 }

@@ -30,9 +30,9 @@ public class CourseController {
     }
 
     @PutMapping("/{id}")
-    public CourseDto put(@PathVariable int id, @RequestBody CourseDto c) {
+    public boolean put(@PathVariable int id, @RequestBody CourseDto c) {
         courseService.update(id, c);
-        return c;
+        return true;
     }
 
     @DeleteMapping("/{id}")

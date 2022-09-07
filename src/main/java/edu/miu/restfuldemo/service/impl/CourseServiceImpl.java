@@ -42,6 +42,7 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public void update(int id, CourseDto course) {
         Course c = modelMapper.map(course, Course.class);
+        c.setId(id);
         courseRepo.update(id, c);
     }
 

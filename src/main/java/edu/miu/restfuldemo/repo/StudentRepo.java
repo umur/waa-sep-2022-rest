@@ -5,11 +5,18 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Repository
 public class StudentRepo {
     private final List<Student> students = new ArrayList<>();
-    private static int currentIndex = 0;
+    private static int currentIndex = 1;
+
+    public Stream<Student> filter(Predicate<? super Student> predicate) {
+        return students.stream().filter(predicate);
+    }
 
     public List<Student> getAll() {
         return students;
@@ -27,16 +34,20 @@ public class StudentRepo {
     }
 
     public void update(int id, Student s) {
-        Student student = get(id);
-        if (student != null) {
-            student = s;
-        }
+        students.stream()
+                .filter(d -> d.getId() == id)
+                .findAny()
+                .ifPresent(d -> {
+                    d.setFirstName(s.getFirstName());
+                    d.setLastName(s.getLastName());
+                    d.setEmail(s.getEmail());
+                    d.setGpa(s.getGpa());
+                    d.setMajor(s.getMajor());
+                    d.setCoursesTaken(s.getCoursesTaken());
+                });
     }
 
     public void delete(int id) {
-        Student student = get(id);
-        if (student != null) {
-            students.remove(student);
-        }
+        students.removeIf(c -> c.getId() == id);
     }
 }
