@@ -1,5 +1,6 @@
 package com.student.rest.service.course.imp;
 
+import com.student.rest.dto.CourseDto;
 import com.student.rest.exceptions.course.CourseDoesNotExistsException;
 import com.student.rest.exceptions.course.CourseAlreadyExistsException;
 import com.student.rest.model.Course;
@@ -15,7 +16,7 @@ public class CourseServiceImp implements CourseService {
     @Autowired
     private CourseRepo courseRepo;
 
-    public Course add(Course course) throws CourseAlreadyExistsException {
+    public CourseDto add(CourseDto course) throws CourseAlreadyExistsException {
         if (courseRepo.exists(course.getId())) {
             throw new CourseAlreadyExistsException("Course Already Exists !!!");
         }
@@ -23,12 +24,12 @@ public class CourseServiceImp implements CourseService {
     }
 
     @Override
-    public List<Course> get() {
+    public List<CourseDto> get() {
         return courseRepo.getCourses();
     }
 
     @Override
-    public boolean updateCourse(Course course, int id) throws CourseDoesNotExistsException {
+    public boolean updateCourse(CourseDto course, int id) throws CourseDoesNotExistsException {
         if (!courseRepo.exists(id)) {
             throw new CourseDoesNotExistsException("Course Already Exists !!!");
         }

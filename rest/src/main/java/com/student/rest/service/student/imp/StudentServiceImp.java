@@ -1,5 +1,7 @@
 package com.student.rest.service.student.imp;
 
+import com.student.rest.dto.CourseDto;
+import com.student.rest.dto.StudentDto;
 import com.student.rest.exceptions.student.StudentAlreadyExistsException;
 import com.student.rest.exceptions.student.StudentDoesNotExistException;
 import com.student.rest.model.Course;
@@ -17,7 +19,7 @@ public class StudentServiceImp implements StudentService {
     private StudentRepo studentRepo;
 
     @Override
-    public Student add(Student student) throws StudentAlreadyExistsException {
+    public StudentDto add(StudentDto student) throws StudentAlreadyExistsException {
         if (studentRepo.exists(student.getId())) {
             throw new StudentAlreadyExistsException("Student Already Exists !!!");
         }
@@ -25,12 +27,12 @@ public class StudentServiceImp implements StudentService {
     }
 
     @Override
-    public List<Student> get() {
+    public List<StudentDto> get() {
       return studentRepo.getStudents();
     }
 
     @Override
-    public boolean updateStudent(Student student, int id) throws StudentDoesNotExistException {
+    public boolean updateStudent(StudentDto student, int id) throws StudentDoesNotExistException {
         if (!studentRepo.exists(id)) {
             throw new StudentDoesNotExistException("Student does not exist !!!");
         }
@@ -46,12 +48,12 @@ public class StudentServiceImp implements StudentService {
     }
 
     @Override
-    public List<Student> getStudentsByMajor(String major) {
+    public List<StudentDto> getStudentsByMajor(String major) {
         return studentRepo.getStudentsByMajor(major);
     }
 
     @Override
-    public List<Course> getCoursesByStudentId(int studentId) {
+    public List<CourseDto> getCoursesByStudentId(int studentId) {
         return studentRepo.getCoursesByStudentId(studentId);
     }
 }

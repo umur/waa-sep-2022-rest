@@ -1,5 +1,6 @@
 package com.student.rest.controller.course;
 
+import com.student.rest.dto.CourseDto;
 import com.student.rest.exceptions.course.CourseDoesNotExistsException;
 import com.student.rest.exceptions.course.CourseAlreadyExistsException;
 import com.student.rest.model.Course;
@@ -18,17 +19,17 @@ public class CourseController {
 
     // /course GET
     @GetMapping
-    public List<Course> getAll() {
+    public List<CourseDto> getAll() {
         return courseService.get();
     }
 
     @PostMapping
-    public Course addCourse(@RequestBody Course course) throws CourseAlreadyExistsException {
+    public CourseDto addCourse(@RequestBody CourseDto course) throws CourseAlreadyExistsException {
         return courseService.add(course);
     }
 
     @PutMapping("/{id}")
-    public boolean updateCourse(@PathVariable int id, @RequestBody Course course) throws CourseDoesNotExistsException {
+    public boolean updateCourse(@PathVariable int id, @RequestBody CourseDto course) throws CourseDoesNotExistsException {
         return courseService.updateCourse(course, id);
     }
 

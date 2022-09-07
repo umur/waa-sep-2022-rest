@@ -1,5 +1,7 @@
 package com.student.rest.controller.student;
 
+import com.student.rest.dto.CourseDto;
+import com.student.rest.dto.StudentDto;
 import com.student.rest.exceptions.student.StudentAlreadyExistsException;
 import com.student.rest.exceptions.student.StudentDoesNotExistException;
 import com.student.rest.model.Course;
@@ -18,17 +20,17 @@ public class StudentController {
 
     // /course GET
     @GetMapping
-    public List<Student> getAll() {
+    public List<StudentDto> getAll() {
         return studentService.get();
     }
 
     @PostMapping
-    public Student addStudent(@RequestBody Student student) throws StudentAlreadyExistsException {
+    public StudentDto addStudent(@RequestBody StudentDto student) throws StudentAlreadyExistsException {
         return studentService.add(student);
     }
 
     @PutMapping("/{id}")
-    public boolean updateStudent(@PathVariable int id, @RequestBody Student student) throws StudentDoesNotExistException {
+    public boolean updateStudent(@PathVariable int id, @RequestBody StudentDto student) throws StudentDoesNotExistException {
         return studentService.updateStudent(student, id);
     }
 
@@ -38,12 +40,12 @@ public class StudentController {
     }
 
     @GetMapping("/major/{major}")
-    public List<Student> getStudentsByMajor(@PathVariable String major) {
+    public List<StudentDto> getStudentsByMajor(@PathVariable String major) {
         return studentService.getStudentsByMajor(major);
     }
 
     @GetMapping("/{id}/course")
-    public List<Course> getCoursesByStudentId(@PathVariable int id) {
+    public List<CourseDto> getCoursesByStudentId(@PathVariable int id) {
         return studentService.getCoursesByStudentId(id);
     }
 

@@ -1,5 +1,6 @@
 package com.student.rest.repo;
 
+import com.student.rest.dto.CourseDto;
 import com.student.rest.model.Course;
 import org.springframework.stereotype.Repository;
 
@@ -10,13 +11,13 @@ import java.util.stream.Collectors;
 @Repository
 public class CourseRepo {
     private static int id = 4;
-    private static List<Course> courses = new ArrayList<>();
+    private static List<CourseDto> courses = new ArrayList<>();
 
     static {
-        Course course1 = new Course(1, "FPP", "CS401");
-        Course course2 = new Course(2, "MPP", "CS421");
-        Course course3 =  new Course(3, "WAP", "CS431");
-        Course course4 =  new Course(4, "WAA", "CS501");
+        CourseDto course1 = new CourseDto(1, "FPP", "CS401");
+        CourseDto course2 = new CourseDto(2, "MPP", "CS421");
+        CourseDto course3 =  new CourseDto(3, "WAP", "CS431");
+        CourseDto course4 =  new CourseDto(4, "WAA", "CS501");
 
         courses.add(course1);
         courses.add(course2);
@@ -26,21 +27,21 @@ public class CourseRepo {
 
 
 
-    public Course addCourse (Course course) {
+    public CourseDto addCourse (CourseDto course) {
         id = id + 1;
         course.setId(id);
         courses.add(course);
         return course;
     }
 
-    public List<Course> getCourses () {
+    public List<CourseDto> getCourses () {
         System.out.println(courses);
         return courses;
     }
 
-    public boolean updateCourse (Course course, int id) {
+    public boolean updateCourse (CourseDto course, int id) {
         int index = 0;
-        for (Course c : courses) {
+        for (CourseDto c : courses) {
             if (id == c.getId()) {
                 courses.set(index, course);
                 return true;
@@ -52,7 +53,7 @@ public class CourseRepo {
 
     public boolean deleteCourse (int id) {
         int index = 0;
-        for (Course c : courses) {
+        for (CourseDto c : courses) {
             if (c.getId() == id) {
                 courses.remove(index);
                 return true;
