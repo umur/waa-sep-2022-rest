@@ -1,4 +1,4 @@
-package edu.miu.restfuldemo.dto;
+package edu.miu.lab2.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

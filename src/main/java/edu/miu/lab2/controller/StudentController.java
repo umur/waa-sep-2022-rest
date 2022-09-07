@@ -1,8 +1,8 @@
-package edu.miu.restfuldemo.controller;
+package edu.miu.lab2.controller;
 
-import edu.miu.restfuldemo.dto.CourseDto;
-import edu.miu.restfuldemo.dto.StudentDto;
-import edu.miu.restfuldemo.service.StudentService;
+import edu.miu.lab2.dto.CourseDto;
+import edu.miu.lab2.dto.StudentDto;
+import edu.miu.lab2.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

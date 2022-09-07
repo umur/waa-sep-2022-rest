@@ -1,4 +1,4 @@
-package edu.miu.restfuldemo;
+package edu.miu.lab2;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;

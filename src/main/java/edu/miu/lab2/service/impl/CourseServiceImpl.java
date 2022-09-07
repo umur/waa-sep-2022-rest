@@ -1,9 +1,9 @@
-package edu.miu.restfuldemo.service.impl;
+package edu.miu.lab2.service.impl;
 
-import edu.miu.restfuldemo.dto.CourseDto;
-import edu.miu.restfuldemo.entity.Course;
-import edu.miu.restfuldemo.repo.CourseRepo;
-import edu.miu.restfuldemo.service.CourseService;
+import edu.miu.lab2.dto.CourseDto;
+import edu.miu.lab2.entity.Course;
+import edu.miu.lab2.repo.CourseRepo;
+import edu.miu.lab2.service.CourseService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 

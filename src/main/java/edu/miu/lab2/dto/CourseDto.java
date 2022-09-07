@@ -1,8 +1,6 @@
-package edu.miu.restfuldemo.dto;
+package edu.miu.lab2.dto;
 
 import lombok.*;
-
-import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor

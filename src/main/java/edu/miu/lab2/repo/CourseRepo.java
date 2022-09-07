@@ -1,7 +1,6 @@
-package edu.miu.restfuldemo.repo;
+package edu.miu.lab2.repo;
 
-import edu.miu.restfuldemo.entity.Course;
-import edu.miu.restfuldemo.entity.Student;
+import edu.miu.lab2.entity.Course;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

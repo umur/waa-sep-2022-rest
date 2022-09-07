@@ -1,4 +1,4 @@
-package edu.miu.restfuldemo.entity;
+package edu.miu.lab2.entity;
 
 import lombok.*;
 

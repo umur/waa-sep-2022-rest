@@ -1,7 +1,7 @@
-package edu.miu.restfuldemo.service;
+package edu.miu.lab2.service;
 
-import edu.miu.restfuldemo.dto.CourseDto;
-import edu.miu.restfuldemo.dto.StudentDto;
+import edu.miu.lab2.dto.CourseDto;
+import edu.miu.lab2.dto.StudentDto;
 
 import java.util.List;
 
