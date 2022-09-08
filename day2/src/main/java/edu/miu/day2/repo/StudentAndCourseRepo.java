@@ -47,13 +47,13 @@ public class StudentAndCourseRepo {
         student1.getCourses().add(course2);
         student1.getCourses().add(course3);
 
-        Student student2=new Student(1,"Hari","Karki","hariKarki@gmail.com","Compro",3,
+        Student student2=new Student(2,"Hari","Karki","hariKarki@gmail.com","Compro",3,
                 "FPP",new ArrayList<>());
         student2.getCourses().add(course4);
         student2.getCourses().add(course2);
         student2.getCourses().add(course5);
 
-        Student student3= new Student(1, "Pradip","DHungel", "Pradipdhungel12@gmail.com",
+        Student student3= new Student(3, "Pradip","DHungel", "Pradipdhungel12@gmail.com",
                 "Compro",4,"WAA",new ArrayList<>());
 
         student3.getCourses().add(course6);
@@ -118,14 +118,14 @@ public class StudentAndCourseRepo {
         return studentUpdate;
     }
 
-    public static Student deleteStudent(Long id) {
+    public Student deleteStudent(Long id) {
         Student student = allStudent.stream().filter(s -> s.getId() == id.intValue()).findAny().orElseThrow(() -> new RuntimeException("Does not Exists!"));
         List<Student> studentsTemp = allStudent.stream().filter(s -> s.getId() != id.intValue()).collect(Collectors.toList());
         allStudent = studentsTemp;
         return student;
     }
 
-    public static List<Student> getStudentsByMajor(String major) {
+    public List<Student> getStudentsByMajor(String major) {
         return allStudent.stream().filter(s -> s.getMajor().equals(major)).collect(Collectors.toList());
     }
 

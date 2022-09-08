@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Edit</title>
+</head>
+<body>
+<h1>Course Add/Edit</h1>
+<div class="container"></div>
+<div style="width: 80%; margin: 0 auto;">
+    <button id="back">Back</button>
+    <div >
+
+        <div >
+            <label>ID</label>
+            <input type="number" id="formId">
+        </div>
+
+        <div >
+            <label >First Name</label>
+            <input type="text"  id="firstName">
+        </div>
+
+        <div>
+            <label >Last Name</label>
+            <input type="text" class="form-control" id="lastName">
+        </div>
+
+        <div>
+            <label >Email</label>
+            <input type="text" class="form-control" id="email">
+        </div>
+
+        <div >
+            <label>Major</label>
+            <input type="text" class="form-control" id="major">
+        </div>
+
+        <div>
+            <label>GPA</label>
+            <input type="number" class="form-control" id="gpa">
+        </div>
+
+    </div>
+    <div>
+        <button id="save" >Save</button>
+    </div>
+</div>
+
+</body>
+<script>
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const id = Object.fromEntries(urlSearchParams.entries()).id;
+
+    const back = document.getElementById("back");
+    back.onclick = () => {window.location.href = "./students.html"};
+
+    if(id) {
+        fetch("http://localhost:8080/students/" + id)
+            .then(response => response.json())
+            .then(element => {
+                const id = document.getElementById("formId");
+                id.value = element.id;
+                const firstName = document.getElementById("firstName");
+                firstName.value = element.firstName;
+                const lastName = document.getElementById("lastName");
+                lastName.value = element.lastName;
+                const email = document.getElementById("email");
+                email.value = element.email;
+                const major = document.getElementById("major");
+                major.value = element.major;
+                const gpa = document.getElementById("gpa");
+                gpa.value = element.gpa;
+            });
+    }
+
+    const save = document.getElementById("save");
+    save.onclick = () => {
+        const newidData = +document.getElementById("formId").value;
+        const fName = document.getElementById("firstName").value;
+        const lName = document.getElementById("lastName").value;
+        const email = document.getElementById("email").value;
+        const major = document.getElementById("major").value;
+        const gpa = document.getElementById("gpa").value;
+        if(!newidData || !fName || !lName || !email || !major || !gpa) {alert("plz Fill Required Fields"); return;}
+
+        let json = {id: newidData, firstName: fName, lastName: lName, email, major, gpa};
+        if(id){
+            fetch("http://localhost:8080/students/" + newidData, {method: 'PUT', body: JSON.stringify(json), headers: new Headers({'content-type': 'application/json'}),})
+                .then(response => window.location.href = "./studentInfo.html")
+        } else {
+            fetch("http://localhost:8080/students", {method: 'POST', body: JSON.stringify(json), headers: new Headers({'content-type': 'application/json'}),})
+                .then(response => window.location.href = "./studentInfo.html")
+        }
+    };
+
+
+</script>
+
+</html>

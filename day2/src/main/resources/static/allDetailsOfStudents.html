@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Student Details</h1>
+<div ></div>
+<div style="width: 80%; margin: 0 auto;">
+    <button id="back" >Back</button>
+    <div id="detail">
+
+    </div>
+</div>
+</body>
+<script>
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const id = Object.fromEntries(urlSearchParams.entries()).id;
+    fetch("http://localhost:8080/students/" + id)
+        .then(response => response.json())
+        .then(element => {
+
+            const detail = document.getElementById("detail");
+
+            const divFirst = document.createElement("div");
+            divFirst.innerHTML = "ID: " + element.id;
+            const divSec = document.createElement("div");
+            divSec.innerHTML = "First Name: " + element.firstName;
+            const divThird = document.createElement("div");
+            divThird.innerHTML = "Last Name: " + element.lastName;
+            const div4th = document.createElement("div");
+            div4th.innerHTML = "Email: " + element.email;
+            const div5th = document.createElement("div");
+            div5th.innerHTML = "Major: " + element.major;
+            const div6th = document.createElement("div");
+            div6th.innerHTML = "GPA: " + element.gpa;
+            const div7th = document.createElement("div");
+            div7th.innerHTML = "Courses: " + element.courseList.reduce((x, y) => y.name + ", "+ x, "");
+            detail.appendChild(divFirst);
+            detail.appendChild(divSec);
+            detail.appendChild(divThird);
+            detail.appendChild(div4th);
+            detail.appendChild(div5th);
+            detail.appendChild(div6th);
+            detail.appendChild(div7th);
+
+            const back = document.getElementById("back");
+            back.onclick = () => {window.location.href = "./studentInfo.html"};
+        });
+</script>
+
+</html>

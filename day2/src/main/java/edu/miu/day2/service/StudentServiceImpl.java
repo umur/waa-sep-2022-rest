@@ -51,12 +51,12 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public StudentDTO deleteStudent(Long id) {
-        return modelMapper.map(studentAndCourseRepo.deleteCourse(id),StudentDTO.class);
+        return modelMapper.map(studentAndCourseRepo.deleteStudent(id),StudentDTO.class);
     }
 
     @Override
     public List<StudentDTO> getAllStudentsByMajor(String major) {
-        List<Student> students= StudentAndCourseRepo.getStudentsByMajor(major);
+        List<Student> students= studentAndCourseRepo.getStudentsByMajor(major);
         return students.stream().map(stu->modelMapper.map(stu,StudentDTO.class)).collect(Collectors.toList());
     }
 
