@@ -1,0 +1,341 @@
+{
+	"info": {
+		"_postman_id": "863bc037-dcfa-47a8-bf50-3f1bf4d05c51",
+		"name": "WAA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "LAB2",
+			"item": [
+				{
+					"name": "http://localhost:8080/courses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/courses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/students",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/courses/2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/courses/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"courses",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/courses/2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Modern Web Applications",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "MWA",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/courses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/courses/3",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Modern Web Applications\",\n    \"code\": \"MWA\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/courses/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"courses",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/students/1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/students/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"students",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/students",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Test\",\n    \"lastName\": \"Nguyen\",\n    \"email\": \"test.nguyen@miu.edu\",\n    \"major\": \"MBA\",\n    \"gpa\": 3.5,\n    \"coursesTaken\": [\n        {\n            \"id\": 1,\n            \"name\": \"Web Application Programming\",\n            \"code\": \"WAP\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/students/3",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Test AAA\",\n    \"lastName\": \"Nguyen\",\n    \"email\": \"test.nguyen@miu.edu\",\n    \"major\": \"MBA\",\n    \"gpa\": 3.5,\n    \"coursesTaken\": [\n        {\n            \"id\": 1,\n            \"name\": \"Web Application Programming\",\n            \"code\": \"WAP\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Web Application Architecture\",\n            \"code\": \"WAA\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/students/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"students",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/courses/2",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"name\": \"Modern Web Applications aaa\",\n        \"code\": \"MWA\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/courses/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"courses",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/students/3",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Test AAA\",\n    \"lastName\": \"Nguyen\",\n    \"email\": \"test.nguyen@miu.edu\",\n    \"major\": \"MBA\",\n    \"gpa\": 3.5,\n    \"coursesTaken\": [\n        {\n            \"id\": 1,\n            \"name\": \"Web Application Programming\",\n            \"code\": \"WAP\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Web Application Architecture\",\n            \"code\": \"WAA\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/students/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"students",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/students/3/courses",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Test AAA\",\n    \"lastName\": \"Nguyen\",\n    \"email\": \"test.nguyen@miu.edu\",\n    \"major\": \"MBA\",\n    \"gpa\": 3.5,\n    \"coursesTaken\": [\n        {\n            \"id\": 1,\n            \"name\": \"Web Application Programming\",\n            \"code\": \"WAP\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Web Application Architecture\",\n            \"code\": \"WAA\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/students/3/courses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"students",
+								"3",
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/students/filter",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Test AAA\",\n    \"lastName\": \"Nguyen\",\n    \"email\": \"test.nguyen@miu.edu\",\n    \"major\": \"MBA\",\n    \"gpa\": 3.5,\n    \"coursesTaken\": [\n        {\n            \"id\": 1,\n            \"name\": \"Web Application Programming\",\n            \"code\": \"WAP\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Web Application Architecture\",\n            \"code\": \"WAA\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/students/filter?major=compro",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"students",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "major",
+									"value": "compro"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
