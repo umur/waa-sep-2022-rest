@@ -1,17 +1,19 @@
-package uz.benom.restbackend.entities;
+package uz.benom.restbackend.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import uz.benom.restbackend.entities.Course;
 
 import java.util.List;
+
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Student {
+public class StudentDto {
     private Integer id;
     private String firstName;
     private String lastName;

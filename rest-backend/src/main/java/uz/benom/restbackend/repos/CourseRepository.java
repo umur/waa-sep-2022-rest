@@ -10,9 +10,10 @@ import java.util.Optional;
 @Repository
 public class CourseRepository {
 
-    public void add(Course course){
+    public Course add(Course course){
         course.setId(Store.getNextId());
         Store.courses.add(course);
+        return course;
     }
 
     public void delete(Integer id){
@@ -20,12 +21,16 @@ public class CourseRepository {
                 .ifPresent(cr -> Store.courses.remove(cr));
     }
 
-    public void update(Integer id, Course body){
-        Store.courses.stream().filter(cr -> cr.getId() == id).findFirst()
-                .ifPresent(cr -> copyProps(body, cr));
+    public Optional<Course> update(Integer id, Course body){
+        Optional<Course> courseOpt = Store.courses.stream().filter(cr -> cr.getId() == id).findFirst();
+            if(courseOpt.isPresent()){
+                copyProps(body, courseOpt.get());
+            }
+            return courseOpt;
+
     }
 
-    public List<Course> getAll(Student student){
+    public List<Course> getAll(){
         return Store.courses;
     }
 

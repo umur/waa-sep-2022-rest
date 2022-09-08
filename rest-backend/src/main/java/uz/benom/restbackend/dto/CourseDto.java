@@ -1,4 +1,4 @@
-package uz.benom.restbackend.entities;
+package uz.benom.restbackend.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Course {
+public class CourseDto {
     private Integer id;
     private String name;
     private String code;
