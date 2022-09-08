@@ -1,0 +1,215 @@
+{
+	"info": {
+		"_postman_id": "39778aac-f993-48fc-a0cc-ca04f07942d0",
+		"name": "WAA RestFull WS",
+		"description": "This is a collection of sample requests to all endpoints in the restfull webservices Lab.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetStudentByMajor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				},
+				"description": "getStudentsByMajor(String major)\n  Returns all students majoring `major`."
+			},
+			"response": []
+		},
+		{
+			"name": "Create Student",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\":2, \"firstName\": \"student2\",\"lastName\": \"student2-lastName\", \"major\": \"ComPro\",\n    \"email\": \"student2@miu.edu\", \"gpa\": 3.8, \n    \"coursesTaken\": [\n        {\n        \"id\": 1,\n        \"name\": \"English\",\n        \"code\": \"ENG-101\"},\n        {\n        \"id\": 2,\n        \"name\": \"Maths\",\n        \"code\": \"Math-101\"},\n        {\n        \"id\": 3,\n        \"name\": \"MPP\",\n        \"code\": \"MPP-201\"}\n        ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/students",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"students"
+					]
+				},
+				"description": "Creates `Student` with `id, firstName, lastName, email, major, gpa, and coursesTaken`.\n    * A student can take multiple courses."
+			},
+			"response": []
+		},
+		{
+			"name": "Create Course",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"id\": 3,\n        \"name\": \"Biology\",\n        \"code\": \"BIO-101\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/courses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"courses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update-student",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\":3, \"firstName\": \"student2\",\"lastName\": \"student2-lastName\", \"major\": \"ComPro\",\n    \"email\": \"student2@miu.edu\", \"gpa\": 3.8, \n    \"coursesTaken\": [\n        {\n        \"id\": 1,\n        \"name\": \"English\",\n        \"code\": \"ENG-101\"},\n        {\n        \"id\": 2,\n        \"name\": \"Maths\",\n        \"code\": \"Math-101\"},\n        {\n        \"id\": 3,\n        \"name\": \"MPP\",\n        \"code\": \"MPP-201\"}\n        ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/students",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update course",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"id\": 2,\n        \"name\": \"Science \",\n        \"code\": \"SCI-101\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/courses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"courses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get student",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/students/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"students",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get course",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/courses/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"courses",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete student",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/students/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"students",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete course",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/courses/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"courses",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
