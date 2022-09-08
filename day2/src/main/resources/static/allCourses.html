@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Courses</title>
+</head>
+<body>
+<div class="container"></div>
+<div style="width: 80%; margin: 0 auto; margin-top: 60px;">
+    <h1>All Courses List</h1>
+    <button id="add">Add</button>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Code</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+    </table>
+</div>
+<script>
+    const add = document.getElementById("add");
+    add.onclick = () => {window.location.href = "./editCourse.html"};
+
+    fetch("http://localhost:8080/courses")
+        .then(response => response.json())
+        .then(data => {
+            const tbody = document.getElementById("tbody");
+            for (const element of data) {
+                const tableRow = document.createElement("tr");
+
+                const tabledata1 = document.createElement("td");
+                tabledata1.innerText = element.id;
+                const tabledata2 = document.createElement("td");
+                tabledata2.innerText = element.name;
+                const tabledata3 = document.createElement("td");
+                tabledata3.innerText = element.code;
+
+                const tabledata4 = document.createElement("td");
+                const view = document.createElement("button");
+                //view.className = "btn btn-primary";
+                view.innerHTML = "Detail";
+                view.onclick = () => {window.location.href = "./allDetailsOfCourses.html?id=" + element.id};
+                tabledata4.appendChild(view);
+
+                const update = document.createElement("button");
+                //update.className = "btn btn-warning";
+                update.innerHTML = "Update";
+                update.onclick = () => {window.location.href = "./editCourse.html?id=" + element.id};
+                tabledata4.appendChild(update);
+
+                const deletebtn = document.createElement("button");
+                //deletebtn.className = "btn btn-danger";
+                deletebtn.innerHTML = "Delete";
+                deletebtn.onclick = () => {
+                    fetch("http://localhost:8080/courses/" + element.id, {method: 'DELETE'});
+                    setTimeout(() => location.reload(), 1000);
+                };
+                tabledata4.appendChild(deletebtn);
+
+                tableRow.appendChild(tabledata1);
+                tableRow.appendChild(tabledata2);
+                tableRow.appendChild(tabledata3);
+                tableRow.appendChild(tabledata4);
+                tbody.appendChild(tableRow);
+            }
+        });
+</script>
+</body>
+</html>

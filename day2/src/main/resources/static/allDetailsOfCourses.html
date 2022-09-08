@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>all courses details</title>
+</head>
+<body>
+<h1>Course Details</h1>
+<div> </div>
+<div style="width: 75%; margin: 0 auto;">
+    <button id="back">Back</button>
+    <div id="detail">
+
+    </div>
+</div>
+</body>
+<script>
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const id = Object.fromEntries(urlSearchParams.entries()).id;
+    fetch("http://localhost:8080/courses/" + id)
+        .then(response => response.json())
+        .then(element => {
+
+            const detail = document.getElementById("detail");
+
+            const div1 = document.createElement("div");
+            div1.innerHTML = "ID: " + element.id;
+            const div2 = document.createElement("div");
+            div2.innerHTML = "Name: " + element.name;
+            const div3 = document.createElement("div");
+            div3.innerHTML = "Code: " + element.code;
+            detail.appendChild(div1);
+            detail.appendChild(div2);
+            detail.appendChild(div3);
+
+            const back = document.getElementById("back");
+            back.onclick = () => {window.location.href = "./allCourses.html"};
+        });
+</script>
+
+</html>

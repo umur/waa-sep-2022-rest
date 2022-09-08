@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Information</title>
+</head>
+<body>
+<div class="container"></div>
+<div style="width: 80%; margin: 0 auto; margin-top: 60px;">
+    <h1>Students List</h1>
+    <button class="btn btn-primary" id="add">Add</button>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Major</th>
+            <th scope="col">GPA</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+    </table>
+</div>
+</body>
+<script>
+    const add = document.getElementById("add");
+    add.onclick = () => {window.location.href = "./editStudent.html"};
+
+    fetch("http://localhost:8080/students")
+        .then(response => response.json())
+        .then(data => {
+            const tbody = document.getElementById("tbody");
+            for (const element of data) {
+                const tblrow = document.createElement("tr");
+
+                const tbldat1 = document.createElement("td");
+                tbldat1.innerText = element.id;
+                const tbldat2 = document.createElement("td");
+                tbldat2.innerText = element.firstName;
+                const tbldat3 = document.createElement("td");
+                tbldat3.innerText = element.lastName;
+                const tbldat4 = document.createElement("td");
+                tbldat4.innerText = element.email;
+                const tbldat5 = document.createElement("td");
+                tbldat5.innerText = element.major;
+                const tbldat6 = document.createElement("td");
+                tbldat6.innerText = element.gpa;
+
+                const tbldat7 = document.createElement("td");
+                const view = document.createElement("button");
+                view.innerHTML = "Detail";
+                view.onclick = () => {window.location.href = "./allDetailsOfStudents.html?id=" + element.id};
+                tbldat4.appendChild(view);
+
+                const update = document.createElement("button");
+
+                update.innerHTML = "Update";
+                update.onclick = () => {window.location.href = "./editStudent.html?id=" + element.id};
+                tbldat4.appendChild(update);
+
+                const deletebtn = document.createElement("button");
+                deletebtn.className = "btn btn-danger";
+                deletebtn.innerHTML = "Delete";
+                deletebtn.onclick = () => {
+                    fetch("http://localhost:8080/students/" + element.id, {method: 'DELETE'});
+                    setTimeout(() => location.reload(), 1000);
+                };
+                tbldat4.appendChild(deletebtn);
+
+                tblrow.appendChild(tbldat1);
+                tblrow.appendChild(tbldat2);
+                tblrow.appendChild(tbldat3);
+                tblrow.appendChild(tbldat4);
+                tblrow.appendChild(tbldat5);
+                tblrow.appendChild(tbldat6);
+                tblrow.appendChild(tbldat7);
+                tbody.appendChild(tblrow);
+            }
+        });
+</script>
+
+</html>

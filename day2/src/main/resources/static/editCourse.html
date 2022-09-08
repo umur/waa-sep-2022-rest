@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADD and Edit Courses</title>
+</head>
+<body>
+<h1>Course Add/Edit</h1>
+<div class="containerCls"></div>
+<div style="width: 80%; margin: 0 auto;">
+
+  <button id="backBtn" >Back</button>
+
+  <div >
+
+    <div >
+      <label >ID:</label>
+      <input type="number" class="form-ctrl" id="formId">
+    </div>
+
+    <div >
+      <label>Name:</label>
+      <input type="text" class="form-ctrl" id="name">
+    </div>
+
+    <div class="codeLbl-Input">
+      <label>Code:</label>
+      <input type="number" class="form-ctrl" id="code">
+    </div>
+
+  </div>
+  <div>
+    <button id="save" >Save</button>
+  </div>
+</div>
+</body>
+<script>
+  const urlSearchParams = new URLSearchParams(window.location.search);//for url search parameter
+  const id = Object.fromEntries(urlSearchParams.entries()).id;
+
+  const back = document.getElementById("back");
+  back.onclick = () => {window.location.href = "./allCourses.html"};
+
+  if(id) {
+    fetch("http://localhost:8080/courses/" + id)
+            .then(response => response.json())
+            .then(element => {
+              const id = document.getElementById("formId");
+              id.value = element.id;
+
+              const name = document.getElementById("name");
+              name.value = element.name;
+
+              const code = document.getElementById("code");
+              code.value = element.code;
+
+            });
+  }
+
+  const save = document.getElementById("save");
+  save.onclick = () => {
+    const newId = +document.getElementById("formId").value;
+    const nameVal = document.getElementById("name").value;
+    const codeVal = +document.getElementById("code").value;
+    if(!newId || !nameVal || !codeVal) {alert("Alert Plz! Fill Required Fields"); return;}
+
+    let json = {id: newId, name: nameVal, code: codeVal};
+    if(id){
+      fetch("http://localhost:8080/courses/" + newId, {method: 'PUT', body: JSON.stringify(json),
+        headers: new Headers({'content-type': 'application/json'}),})
+              .then(response => window.location.href = "./allCourses.html")
+    } else {
+      fetch("http://localhost:8080/courses", {method: 'POST', body: JSON.stringify(json),
+        headers: new Headers({'content-type': 'application/json'}),})
+              .then(response => window.location.href = "./allCourses.html")
+    }
+  };
+
+
+</script>
+
+</html>
