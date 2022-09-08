@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+</head>
+<body>
+<form>
+    <div class="form-group">
+        <label for="major">Major</label>
+        <input type="text" class="form-control" id="major" placeholder="major">
+    </div>
+
+    <button type="button" class="btn btn-primary" onclick="findStudentByMajor()">Find Students By Major</button>
+
+    <div class="form-group">
+        <label for="student_id">Student ID</label>
+        <input type="text" class="form-control" id="student_id" placeholder="Student ID">
+    </div>
+
+    <button type="button" class="btn btn-primary" onclick="findCoursesByStudentId()">Find Courses By Student Id</button>
+</form>
+<a href="home.html">Home</a>
+<script>
+    function findStudentByMajor() {
+        let major = document.getElementById("major").value;
+
+        fetch(`http://localhost:8080/students?major=${major}`)
+            .then((response) => response.json())
+            .then((students) => console.log({ students }));
+    }
+
+    function findCoursesByStudentId() {
+        let id = document.getElementById("id").value;
+
+        fetch(`http://localhost:8080/students/${id}/courses`)
+            .then((response) => response.json())
+            .then((courses) => console.log({ courses }));
+    }
+</script>
+</body>
+</html>
