@@ -39,6 +39,15 @@ public class StudentRepo {
         studentID++;
         return student;
     }
+    public Student findStudentById(int id){
+        for(Student s: students){
+            if(s.getId()==id){
+                return s;
+            }
+        }
+        return null;
+    }
+
     public void updateStudent(int id, Student student){
         int index=0;
         for(Student s: students){

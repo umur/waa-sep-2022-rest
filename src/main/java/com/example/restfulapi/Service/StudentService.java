@@ -10,6 +10,7 @@ import java.util.List;
 public interface StudentService {
 
     public List<StudentDTO> findAll();
+    public StudentDTO findStudentById(int id);
     public void add(StudentDTO student);
     public void updateStudent(int id, StudentDTO student);
     public void deleteStudent(int id);

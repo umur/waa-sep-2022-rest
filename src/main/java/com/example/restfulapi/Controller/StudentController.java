@@ -6,10 +6,11 @@ import com.example.restfulapi.Model.Course;
 import com.example.restfulapi.Model.Student;
 import com.example.restfulapi.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-
+@CrossOrigin
 @RestController
 @RequestMapping("/students")
 public class StudentController {
@@ -26,8 +27,9 @@ public class StudentController {
         studentService.add(student);
     }
     @DeleteMapping("/{id}")
-    public void deleteStudent(@PathVariable int id){
+    public ResponseEntity<?> deleteStudent(@PathVariable int id){
         studentService.deleteStudent(id);
+        return ResponseEntity.status(200).build();
     }
     @PutMapping("/{id}")
     public void updateStudent(@PathVariable int id, @RequestBody StudentDTO student){
@@ -38,8 +40,15 @@ public class StudentController {
     public List<StudentDTO> getAllStudentsByMajor(@RequestParam String major ){
         return studentService.getAllStudentsByMajor(major);
     }
-
     @GetMapping("/{id}")
+    public StudentDTO getStudentById(@PathVariable int id){
+        return studentService.findStudentById(id);
+    }
+
+
+
+
+    @GetMapping("/{id}/courses")
     public List<CourseDTO> getCoursesByStudentId(@PathVariable int id){
         return studentService.getAllCoursesByStudentId(id);
     }

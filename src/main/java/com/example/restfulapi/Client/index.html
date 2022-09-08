@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+<style>
+    .mycontainer {
+        width: 95%;
+        height: 600px;
+        margin: 100px auto;
+        display: grid;
+        grid-template-columns: 3fr 3fr;
+
+    }
+
+    .left {
+        width: 100%;
+        height: 100%;
+
+    }
+
+    .col-6 {
+        margin: 5px;
+    }
+
+    .right {
+        width: 100%;
+        height: 100%;
+
+    }
+
+    .insidecontainer {
+
+        margin: 100px auto;
+
+    }
+
+    .row {
+        margin-left: 50px;
+    }
+
+    .createbtn {
+        float: right;
+        margin-right: 200px;
+    }
+
+    .btn {
+        width: 100px;
+        margin: 5px;
+    }
+
+    table {
+        background-color: rgb(34, 30, 30);
+        border-radius: 5px;
+        margin-top: 50px;
+    }
+
+    table td {
+        padding: 12px;
+    }
+</style>
+
+<body>
+
+    <div class="mycontainer">
+        <div class="left">
+
+            <div class="container">
+                <center>
+                    <button class="btn btn-primary" onclick="findall()" type="submit">Find All</button>
+                    <button class="btn btn-primary" onclick="findById()" type="submit">Find By Id</button>
+                    <button class="btn btn-primary" onclick="update()" type="submit">Update</button>
+                    <button class="btn btn-primary" onclick="deleteOne()" type="submit">Delete</button>
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Filter By</span>
+                        <input type="text" id="filter" class="form-control" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+                </center>
+
+
+
+                <div class="insidecontainer">
+                    <center>
+                        <p style="margin: 20px;" class="h3">Create New</p>
+                    </center>
+                    <div class="row">
+                        <div class="col-6 col-sm-4">
+                            <div class="input-group input-group-sm mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">ID</span>
+                                <input type="text" id="id" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-4">
+                            <div class="input-group input-group-sm mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">Major</span>
+                                <input type="text" id="major" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+
+                        <div class="w-100 d-none d-md-block"></div>
+
+                        <div class="col-6 col-sm-4">
+                            <div class="input-group input-group-sm mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">Firstname</span>
+                                <input type="text" id="firstname" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-4">
+                            <div class="input-group input-group-sm mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">Lastname</span>
+                                <input type="text" id="lastname" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+
+                        <!-- Force next columns to break to new line at md breakpoint and up -->
+                        <div class="w-100 d-none d-md-block"></div>
+
+                        <div class="col-6 col-sm-4">
+                            <div class="input-group input-group-sm mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">@</span>
+                                <input type="text" id="email" placeholder="" class="form-control"
+                                    aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-4">
+                            <div class="input-group input-group-sm mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">GPA</span>
+                                <input type="text" id="gpa" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="createbtn">
+                        <button type="button" onclick="create()" class="btn btn-warning">Create</button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="right">
+            <table id="table" class="table table-dark table-striped">
+                <th>#</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Major</th>
+                <th>GPA</th>
+
+            </table>
+
+        </div>
+    </div>
+
+
+
+
+    <script>
+
+        function findall() {
+            
+            fetch('http://localhost:8080/students/', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    for (let ele of data) {
+                        let tr = document.createElement("tr")
+                        for (let obj in ele) {
+
+                            if (!(Array.isArray(ele[obj]))) {
+                                let td = document.createElement("td")
+                                td.innerText = ele[obj]
+                                tr.append(td)
+
+                            }
+
+                        }
+                        document.getElementById("table").append(tr)
+
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+
+        }
+        function findById(){
+            let table =document.getElementById("table")
+            for(let e=1; e<=table.children.length; e++){            
+                table.removeChild(table.children[e])
+            }
+            
+            let filter=document.getElementById("filter")
+            console.log(filter.value)
+            fetch ('http://localhost:8080/students/'+filter.value+'/',{
+                method:'Get',
+                header:{
+                    'Content-Type':'application/json'
+                },
+            })
+            .then((response)=>response.json())
+            .then((data) =>{         
+                    
+                    let tr = document.createElement("tr")
+                    for(let ele in data){  
+                         if (!(Array.isArray(data[ele]))) {                     
+                        let td = document.createElement("td")
+                        td.innerText = data[ele]
+                        tr.append(td)
+                        document.getElementById("table").append(tr)
+                    }
+                }
+                    
+                }
+            )
+            .catch((error)=>{
+                console.log('Error',error)
+            })
+        }
+        function deleteOne(){
+             let filter = document.getElementById("filter")
+             fetch('http://localhost:8080/students/' + filter.value + '/', {
+                method: 'Delete',
+                header: {
+                    'Content-Type': 'application/json'
+                },
+            })
+            alert("Deleted Successfully")
+                
+                .catch((error) => {
+                    console.log('Error', error)
+                })
+            
+        }
+        function create(){
+            let data= {
+                id: document.getElementById("id").value,
+                firstName: document.getElementById("firstname").value,
+                lastName: document.getElementById("lastname").value,
+                email: document.getElementById('email').value,
+                major: document.getElementById('major').value,
+                gpa: document.getElementById('gpa').value
+            }
+            console.log(JSON.stringify(data))
+            fetch('http://localhost:8080/students',{
+                method:'Post',
+                header:{
+                    'Content-Type':'application/json'
+                },
+                body:JSON.stringify(data)
+            })
+            alert("Student Added Sucessfully")
+           
+        }
+
+    </script>
+
+
+</body>
+
+</html>
