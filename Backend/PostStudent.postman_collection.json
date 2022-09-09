@@ -1,0 +1,32 @@
+{
+	"info": {
+		"_postman_id": "5c004c9e-2862-4cd9-a885-6baa0a68bd0a",
+		"name": "PostStudent",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21639338"
+	},
+	"item": [
+		{
+			"name": "Post Student",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":4,\r\n    \"firstName\":\"Abc\",\r\n    \"lastName\":\"Edf\",\r\n    \"email\":\"abc@gmail.com\",\r\n    \"major\":\"ComPro\",\r\n    \"gpa\":3.7,\r\n    \"coursesTaken\":[\r\n        {\r\n            \"id\":4,\r\n            \"name\":\"FPP\",\r\n            \"code\": \"CS401\"\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/students",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"students"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

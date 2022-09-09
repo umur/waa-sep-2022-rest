@@ -1,0 +1,18 @@
+{
+	"info": {
+		"_postman_id": "6068b1c2-2181-48ad-b7e2-d772411069cd",
+		"name": "GetStudentById",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21639338"
+	},
+	"item": [
+		{
+			"name": "Get Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
