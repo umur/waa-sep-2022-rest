@@ -1,57 +1,54 @@
 
-# Lab 2 - RestFUL Web Services
+# Lab 2 - Spring Data I
 
-In this lab, you will create a spring boot application from scratch to implement the following requirements.
+In this lab you will develop a Product Review Application.
 
-Before implementation, refer to the ‘Useful GIT Videos’ section.
+###  Requirements
+---
+* Make domain models for
+	* `Category` with `id` and `name`.
+		* A `Category` can have many `Products`.
+	* `Product` with `id, name, price` and `rating`.
+		* A `Product` can belong to only one `Category`.
+	* `User` with `id, email, password, firstName, lastname`.
+		* `User` can create many `Reviews`.
+		* `User` can have only one `Address`.
+	* `Address` with `id, street, zip` and `city`.
+		* An `Address` can belong to only one `User`. 
+	* `Review` with `id, comment`.
+		* A `Review` can only belong to one `User`.
+* Create entity relationship mappings as follows: (Creating a package for each requirement is advised.)
+	* Create them using `uni-directional`.
+	* Create them using `bi-directional`.
+	* Create `User` and `Review` mapping with  `Join Table`.
+	* Create `User` and `Review` mapping with  `Join Column`.
+	* Create `User` and `Address` mapping with  `Join Table`.
+	* Create `User` and `Address` mapping with  `Join Column`.
 
-###  Phase I
+* Implement CRUD operations and build REST API for all domain models.
+
+* Implement the following queries by using `Naming Convention` and `JPQL`. Create REST endpoints for them.
+	* Find all products that cost more than `minPrice`.
+	* Find all products in `cat` category and cost less than `maxPrice`.
+	* Find all products that contain `keyword` in the name.
+	* Find reviews of the product whose id is `id`. 
+
+### Technical Details
 ---
 * Use n-tier software architecture model.
-* You are not allowed to use DTOs in this phase.
-* Make a domain model `Course` with  `id, name, code`.
-* Make a domain model `Student` with `id, firstName, lastName, email, major, gpa, and coursesTaken`.
-    * A student can take multiple courses.
-* Create the repositories for the domain models. 
-	* Hold data in array lists.
-* Implement CRUD operations for the domains.
- * Implement `getStudentsByMajor(String major)` method.
-   * Returns all students majoring `major`.
- * Implement `getCoursesByStudentId(int studentId)` method.
-   * Returns all courses of the student.
+* Use DTOs.
+* PostgreSQL is recommended as a Relational Database system.
+* Populate your database with dummy data using `data.sql`.
 
-### Phase II
----
-* Implement `Phase I` by using DTOs.
-
-
-### Phase III
----
-* Implement `Phase II` by using ModelMapper.
-
-### Phase IV
----
-*  Create UI with HTML and JavaScript.
-*  You are not allowed to use any framework like React or Angular.
-*  You are not allowed to use jQuery.
-*  Use bootstrap for styling and responsive design.
-* Communicate with the backend app that you have created in Phase III.
-
-### Tips
----
-* Each phase is a different project. 
-
-### Optional
----
-* Create API documentation with `Swagger`.
 
 ## Submission
 
-* For each phase (except for Phase IV), create a postman collection that includes sample requests for all of your endpoints.
+* Create a postman collection that includes sample requests for all of your endpoints.
 * Fork the repository and push your changes.
 * Once you finished your project, send a Pull Request. (Send only one Pull Request once you finish the assignment.)
 
 ### Important Notes
+---
 
  * You are not allowed to share codes with your classmates. If detected, you will get NC.
  * **For pairs:**
@@ -64,12 +61,4 @@ Before implementation, refer to the ‘Useful GIT Videos’ section.
 -   Remember to respect the code honor submission policy. All written code must be original. Presenting something as one’s own work when it came from another source is plagiarism and is forbidden.
     
 -   Plagiarism is a very serious thing in all American academic institutions and is guarded against vigilantly by every professor.
-
-### Useful GIT Videos
-* Command Line GIT
-	* https://www.youtube.com/watch?v=USjZcfj8yxE
-* GitHub Desktop
-	* https://www.youtube.com/watch?v=0nzJXJAhlsk
-* Pull Request
-	* https://www.youtube.com/watch?v=For9VtrQx58
 
