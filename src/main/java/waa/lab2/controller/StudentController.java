@@ -23,6 +23,7 @@ public class StudentController {
     @GetMapping("/students/{id}")
     public StudentDto getStudentById(@PathVariable Integer id){
         StudentDto studentDto=studentService.getStudentByID(id);
+        //////
         return studentDto;
     }
 
